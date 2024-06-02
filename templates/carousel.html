@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изображения</title>
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+            background-image: url(static/image/back.jpg);
+            background-size: cover;
+            color: #fff;  /* Цвет текста на фоне */
+            padding: 50px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        p {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        #formContainer {
+            text-align: center;
+            margin-top: 200px;
+        }
+        body,html{
+        height:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        margin:0;
+        }
+        #formContainer {
+            text-align: center;
+            margin-top: 250px;
+        }
+        .image-gallery{
+
+        display:grid;
+        grid-template-columns:repeat(3,minmax(300px,1fr));
+        gap:10px;
+        grid-gap:10px;
+        width: 1000px;
+        height:auto;
+        }
+        .container img {
+        max-width:100%;
+        height:auto;
+        display: block;
+        text-align:center;
+
+
+        }
+
+        .container {
+        display:flex;
+        width:300px;
+        align-items:left;
+
+        }
+
+        .custom-checkbox{
+        width:35px;
+        height:35px;
+        padding:10px 5px;
+        }
+        {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+    .buttons {
+    margin: 10%;
+    text-align: center;
+    }
+
+    .btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    }
+
+    .btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    }
+
+    .btn-hover:focus {
+    outline: none;
+    }
+
+    .btn-hover.color-1 {
+    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+    }
+    .form
+    {
+    float:left;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div id="formContainer">
+        <h3>Ваш запрос:</h3>
+        <p>{{ user_text }}</p>
+        <h1>Сгенерированные изображения</h1>
+
+        <form action="{{ url_for('download') }}" method="post">
+            <div class="image-gallery">
+        {% for image in images %}
+    <div class="container">
+        <div class="custom-checkbox">
+
+        <input type="checkbox"  name="selected_images" value="{{ image.id }}">
+
+        </div>
+        <img src="{{ image.url }}">
+    </div>
+  {% endfor %}
+    </div>
+        <div class="buttons">
+    <button class="btn-hover color-1" type="submit" id="download-button">Скачать выбранные изображения</button>
+            </div>
+  </form>
+    </div>
+    </div>
+
+
+</body>
+</html>

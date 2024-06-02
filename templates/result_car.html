@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изображения</title>
+    <style>
+        body,html{
+        height:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        margin:0;
+        }
+        #formContainer {
+            text-align: center;
+            margin-top: 250px;
+        }
+        .image-gallery{
+
+        display:grid;
+        grid-template-columns:repeat(3,minmax(200px,1fr));
+        gap:10px;
+        width: 720px;
+        height:auto;
+        }
+        .image-gallery img {
+        max-width:100%;
+        height:auto;
+        display: block;
+        text-align:center;
+        }
+        .radio_button{
+        width: 25px;
+        height:25px;
+        .container{
+        display:flex;
+        width:240px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+
+
+    <p>{{ sel_img }}</p>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Выбор изображений</title>
+</head>
+<body>
+  <h1>Выберите изображения для скачивания</h1>
+
+  {% for image in images %}
+    <div class="image-container">
+      <img src="{{ image.url }}">
+      <input type="checkbox" name="selected_images" value="{{ image.id }}">
+    </div>
+  {% endfor %}
+
+  <form action="{{ url_for('download') }}" method="post">
+    <button type="submit" id="download-button">Скачать выбранные изображения</button>
+  </form>
+
+</body>
+</html>
